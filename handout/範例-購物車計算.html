@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <table border="1" width="300">
+        <tr>
+            <th>序</th>
+            <th>品項</th>
+            <th>數量</th>
+            <th>價格</th>
+            <th>小計</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>衣服</td>
+            <td>
+                <select class="num">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </td>
+            <td>
+                <span class="money">60</span>
+            </td>
+            <td>
+                <span class="sum"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>文具</td>
+            <td>
+                <select class="num">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </td>
+            <td>
+                <span class="money">30</span>
+            </td>
+            <td>
+                <span class="sum"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>鞋子</td>
+            <td>
+                <select class="num">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </td>
+            <td>
+                <span class="money">300</span>
+            </td>
+            <td>
+                <span class="sum"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" align="right">
+                總計
+                <span id="pay_sum"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    //jquery
+    function pay_sum_f()
+    {
+        pay_sum = 0;
+        $(".num").each(function(){
+            num = $(this).val();
+            money = $(this).parent().parent().find(".money").html();
+            pay_sum += num * money;
+            $(this).parent().parent().find(".sum").html(num * money);
+        });
+        $("#pay_sum").html(pay_sum);
+    }
+
+    $(document).ready(function(){
+        pay_sum_f();
+        $( '.num' ).on( "click", pay_sum_f );
+    });
+</script>
+</html>

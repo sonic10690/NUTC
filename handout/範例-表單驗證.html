@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form method="get">
+        <div>
+            姓名
+            <input type="text" id="user_name">
+            <span class="message"></span>
+        </div>
+        密碼
+        <input type="password" id="user_pw"><br>
+        確認密碼
+        <input type="password" id="user_repw"><br>
+        性別:
+        <input type="radio" name="user_sex" value="男">男
+        <input type="radio" name="user_sex" value="女">女<br>
+        <input type="submit" id="register" value="註冊">
+    </form>
+</body>
+<script>
+    //Javascript
+    // register = document.getElementById("register");
+    // register.onclick = function(){
+    //     user_name = document.getElementById("user_name");
+    //     user_pw   = document.getElementById("user_pw");
+    //     user_repw = document.getElementById("user_repw");
+    //     user_sex  = document.getElementsByName("user_sex");
+    //     sex = "";
+    //     for (var i=0; i<user_sex.length; i++)
+    //     {
+    //         if(user_sex[i].checked)
+    //         {
+    //             sex = user_sex[i].value;
+    //         }
+    //     }
+    //     if(user_name.value!="" &&
+    //        user_pw.value != "" &&
+    //        user_repw.value != "" &&
+    //        user_pw.value == user_repw.value &&
+    //        sex != "")
+    //     {
+    //         return true;
+    //     }
+    //     else
+    //     {
+    //         msg_name = user_name.parentNode.getElementsByClassName("message");
+    //         msg_name[0].innerHTML = "姓名未輸入";
+    //         return false;
+    //     }
+    // };
+    //jquery
+    $('#register').click(function(){
+        user_name = $("#user_name").val();
+        user_pw = $("#user_pw").val();
+        user_repw = $("#user_repw").val();
+        user_sex = $("input[name=user_sex]:checked").val();
+        if(user_name!="" &&
+           user_pw != "" &&
+           user_repw != "" &&
+           user_pw == user_repw &&
+           user_sex != "" &&
+           user_sex != "undefined" )
+        {
+            return true;
+        }
+        else
+        {
+            msg_name = $("#user_name").parent().find(".message");
+            msg_name.html("姓名未輸入");
+            return false;
+        }
+    });
+</script>
+</html>
